@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <h2>{{ appTitle }}</h2>
     <h3>{{ counterData.title }}</h3>
     <div>
       <button @click="decreaseCounter(2)" class="btn">--</button>
@@ -13,13 +14,16 @@
 
     <div class="edit">
       <h4>Edit counter title:</h4>
-      <input v-model="counterData.title" type="text" />
+      <input v-model="counterData.title" type="text" v-autofocus />
     </div>
   </div>
 </template>
 
 <script setup>
 import { reactive, computed, watch } from "vue";
+import { vAutofocus } from "@/directives/vAutoFocus";
+
+const appTitle = "My OK Counter App";
 
 const counterData = reactive({
   count: 0,
