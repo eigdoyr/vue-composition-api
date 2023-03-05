@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h2>{{ appTitle }}</h2>
+    <h2 ref="appTitleRef">{{ appTitle }}</h2>
     <h3>{{ counterData.title }}</h3>
     <div>
       <button @click="decreaseCounter(2)" class="btn">--</button>
@@ -20,11 +20,24 @@
 </template>
 
 <script setup>
-import { reactive, computed, watch } from "vue";
+/*
+imports
+*/
+
+import { ref, reactive, computed, watch } from "vue";
 import { vAutofocus } from "@/directives/vAutoFocus";
+
+/*
+appTitle
+*/
 
 const appTitle = "My OK Counter App";
 
+const appTitleRef = ref(null);
+
+/*
+counter
+*/
 const counterData = reactive({
   count: 0,
   title: "My Counter",
