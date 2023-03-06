@@ -8,7 +8,7 @@
       </li>
     </ul>
 
-    <textarea />
+    <textarea v-autofocus />
   </div>
 </template>
 
