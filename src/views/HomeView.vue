@@ -17,6 +17,11 @@
       <input v-model="counterData.title" type="text" v-autofocus />
     </div>
   </div>
+
+  <div>
+    <button @click="handleClick">Insert/Remove</button>
+    <div v-if="show" ref="content">I am an element</div>
+  </div>
 </template>
 
 <script setup>
@@ -24,8 +29,16 @@
 imports
 */
 
-import { ref, reactive, computed, watch } from "vue";
+import { ref, reactive, computed, watch, nextTick } from "vue";
 import { vAutofocus } from "@/directives/vAutoFocus";
+
+const show = ref(true);
+const content = ref();
+const handleClick = async () => {
+  show.value = !show.value;
+  await nextTick();
+  console.log(show.value, content.value);
+};
 
 /*
 appTitle
@@ -56,7 +69,11 @@ const oddOrEven = computed(() => {
   return counterData.count % 2 === 0 ? "even" : "odd";
 });
 
-const increaseCounter = (amount) => (counterData.count += amount);
+const increaseCounter = async (amount, e) => {
+  counterData.count += amount;
+  await nextTick();
+  console.log("do something when counter has updated in the dom");
+};
 const decreaseCounter = (amount) => (counterData.count -= amount);
 </script>
 
