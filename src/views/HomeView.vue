@@ -16,11 +16,11 @@
       <h4>Edit counter title:</h4>
       <input v-model="counterData.title" type="text" v-autofocus />
     </div>
-  </div>
 
-  <div>
-    <button @click="handleClick">Insert/Remove</button>
-    <div v-if="show" ref="content">I am an element</div>
+    <div>
+      <button @click="handleClick">Insert/Remove</button>
+      <div v-if="show" ref="content">I am an element</div>
+    </div>
   </div>
 </template>
 
